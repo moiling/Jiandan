@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.lingxiao.exam.ui.activity.AboutActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_marginTop="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/ic_logo_large"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/app_name"
+            android:textSize="18sp"
+            android:textColor="@color/primary_text"/>
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_marginTop="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="16sp"
+            android:textColor="@color/secondary_text"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="jandan.net\nsuper8moi@gmail.com"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/secondary_text"
+        android:textSize="16sp"/>
+
+    <!--toolbar下方阴影-->
+    <View
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:background="@drawable/shadow"
+        android:layout_height="2dp"/>
+</RelativeLayout>

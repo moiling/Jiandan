@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">JIANDAN</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="tab_1">Girls</string>
+    <string name="tab_2">Stories</string>
+    <string name="tab_3">Lots</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="details">Details</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+    <string name="please_enter_username">Please enter username</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="username_or_password_error">Username or password error</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="password">Password</string>
+    <string name="remember_me"> Remember me</string>
+    <string name="auto_login"> Stay Signed</string>
+    <string name="login">Sign In</string>
+    <string name="go">Go</string>
+    <string name="user_name">Username</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_deltails">DeltailsActivity</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="color_select">Color:</string>
+    <string name="havent_color">Haven\'t more colors.</string>
+    <string name="refresh">APP refresh</string>
+    <string name="title_activity_girls_details">GirlsDetailsActivity</string>
+
+    <string name="save">Save</string>
+    <string name="share">Share</string>
+    <string name="reply">Reply</string>
+    <string name="title_activity_stories_details">StoriesDetailsActivity</string>
+    <string name="author">Author</string>
+    <string name="email">Email</string>
+    <string name="date">Date</string>
+    <string name="send_to">Send to</string>
+    <string name="from_galley">From Gallery</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="default_text">Type something here</string>
+    <string name="find_new_version">Find new version:</string>
+    <string name="if_update">, Update now?</string>
+    <string name="update_app">APP Update</string>
+    <string name="update">Update</string>
+    <string name="loading">Loading</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="not_now">No</string>
+    <string name="title_activity_lots_details">LotsDetailsActivity</string>
+
+
+</resources>

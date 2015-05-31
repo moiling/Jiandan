@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">煎蛋</string>
+
+    <string name="action_settings">设置</string>
+    <string name="tab_1">妹子</string>
+    <string name="tab_2">段子</string>
+    <string name="tab_3">骰子</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="details">信息</string>
+    <string name="settings">设置</string>
+    <string name="about">关于</string>
+    <string name="exit">退出</string>
+    <string name="please_enter_username">请输入用户名</string>
+    <string name="please_enter_password">请输入密码</string>
+    <string name="username_or_password_error">用户名/密码错误</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="password">密码</string>
+    <string name="remember_me"> 记住密码</string>
+    <string name="auto_login"> 自动登录</string>
+    <string name="login">登录</string>
+    <string name="go">走</string>
+    <string name="user_name">用户名</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_deltails">DeltailsActivity</string>
+    <string name="sign_out">切换用户</string>
+    <string name="color_select">主题色:</string>
+    <string name="havent_color">没有更多颜色了</string>
+    <string name="refresh">APP 更新</string>
+    <string name="title_activity_girls_details">GirlsDetailsActivity</string>
+
+    <string name="save">保存</string>
+    <string name="share">分享</string>
+    <string name="reply">吐槽</string>
+    <string name="title_activity_stories_details">StoriesDetailsActivity</string>
+    <string name="author">作者</string>
+    <string name="email">邮箱</string>
+    <string name="date">日期</string>
+    <string name="send_to">发送至</string>
+    <string name="from_galley">相册</string>
+    <string name="take_photo">拍照</string>
+    <string name="default_text">随便写点东西吧</string>
+    <string name="find_new_version">有新版本：</string>
+    <string name="if_update">, 是否更新？</string>
+    <string name="update_app">APP 更新</string>
+    <string name="update">更新</string>
+    <string name="loading">正在下载</string>
+    <string name="please_wait">请稍后…</string>
+    <string name="not_now">暂不更新</string>
+
+    <string name="delete">删除</string>
+    <string name="if_delete">确认删除？</string>
+    <string name="ok">好的</string>
+    <string name="cancel">取消</string>
+    <string name="create">创建</string>
+    <string name="content1">快点击“+”号，新建骰子！</string>
+    <string name="content2">点击创建，然后使劲摇！</string>
+
+
+</resources>

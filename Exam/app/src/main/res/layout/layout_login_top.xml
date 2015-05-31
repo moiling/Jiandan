@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/top_menu"
+    android:paddingTop="26dp"
+    android:layout_width="match_parent"
+    android:layout_height="320dp"
+    android:layout_alignParentTop="true"
+    android:background="@color/background_material_light"
+    android:visibility="invisible">
+
+    <LinearLayout
+        android:id="@+id/menu_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_user"
+                android:layout_marginTop="20dp"/>
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/ed_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="14dp"
+                android:paddingLeft="6dp"
+                android:hint="@string/user_name"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:textColor="@color/secondary_text"
+                android:textColorHint="@color/secondary_text"
+                android:textSize="16sp"
+                android:singleLine="true"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_password"
+                android:layout_marginTop="20dp"/>
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/ed_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="14dp"
+                android:paddingLeft="6dp"
+                android:hint="@string/password"
+                android:maxLength="12"
+                android:maxLines="1"
+                android:textColor="@color/secondary_text"
+                android:textColorHint="@color/secondary_text"
+                android:textSize="16sp"
+                android:imeOptions="actionGo"
+                android:inputType="numberPassword"
+                android:textColorLink="@color/secondary_text"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/btn_login"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="34dp"
+            android:layout_marginRight="34dp"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="4dp"
+            card_view:cardElevation="2dp"
+            card_view:cardBackgroundColor="@color/primary_color">
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="12dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:textColor="@color/light_white"
+                android:textSize="16sp"
+                android:text="@string/login" />
+
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+
+            android:layout_marginLeft="34dp"
+            android:layout_marginRight="36dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_remember_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/remember_me"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="6dp"
+                android:paddingLeft="4dp"
+                android:gravity="center_vertical"
+                android:button="@drawable/checkbox"
+                android:textSize="16sp"
+                android:textColor="@color/secondary_text"
+                android:layout_centerInParent="true"/>
+
+            <CheckBox
+                android:id="@+id/cb_auto_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/auto_login"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="6dp"
+                android:paddingLeft="4dp"
+                android:gravity="center_vertical"
+                android:button="@drawable/checkbox"
+                android:textSize="16sp"
+                android:textColor="@color/secondary_text"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

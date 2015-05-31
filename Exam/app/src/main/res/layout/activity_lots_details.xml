@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.lingxiao.exam.ui.activity.LotsDetailsActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <RelativeLayout
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/lv_lots"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="false"
+            android:scrollbars="none"/>
+        <TextView
+            android:id="@+id/tv_hint_add_table"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/content2"
+            android:lineSpacingExtra="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/secondary_text"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:id="@+id/btn_float"
+            android:background="@mipmap/ic_float_button_more"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"/>
+
+        <include layout="@layout/layout_create"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_show"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#cc000000"
+        android:textColor="@color/white"
+        android:textSize="26sp"/>
+
+    <View
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:background="@drawable/shadow"
+        android:layout_height="2dp"/>
+</RelativeLayout>

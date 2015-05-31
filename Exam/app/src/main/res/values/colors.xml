@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="reveal_color">#1b000000</color>
+    <color name="white">#ffffff</color>
+    <color name="light_white">#daebf7</color>
+    <color name="primary_text">#222222</color>
+    <color name="secondary_text">#bbbbbb</color>
+    <color name="divider_color">#B6B6B6</color>
+    <color name="toolbar_item_color">#ccd4d8</color>
+
+    <color name="my_red">#ff9182</color>
+    <color name="my_dark_red">#ef7b6b</color>
+    <color name="logo_dark_color">#fb941e</color>
+    <color name="logo_color">#fca729</color>
+    <color name="primary_color">#61a6d6</color>
+    <color name="primary_dark_color">#4290c6</color>
+    <color name="accent_color">#ff9182</color>
+
+    <!--blue-->
+    <color name="blue_primary_color">#61a6d6</color>
+    <color name="blue_primary_dark_color">#4290c6</color>
+    <color name="blue_light_white">#daebf7</color>
+    <color name="blue_accent_color">#ff9182</color>
+    <!--blue_grey-->
+    <color name="blue_grey_primary_color">#556f7c</color>
+    <color name="blue_grey_primary_dark_color">#4c646f</color>
+    <color name="blue_grey_light_white">#ccd4d8</color>
+    <color name="blue_grey_accent_color">#FF9800</color>
+    <!--red-->
+    <color name="red_primary_color">#ff9182</color>
+    <color name="red_primary_dark_color">#ef7b6b</color>
+    <color name="red_light_white">#fff9f8</color>
+    <color name="red_accent_color">#61a6d6</color>
+</resources>
