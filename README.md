@@ -2,7 +2,7 @@
 
 - APK下载
 
-  > 链接：http://pan.baidu.com/s/1hqozvVm 密码：1k5w
+  > 链接：http://pan.baidu.com/s/1mgh5CoS 密码：l8w5
 
 - 兼容
 
