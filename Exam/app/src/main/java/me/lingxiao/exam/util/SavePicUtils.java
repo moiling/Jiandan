@@ -13,24 +13,19 @@ import java.io.IOException;
 
 public class SavePicUtils {
     public static void saveGirlsPic(int id, Bitmap bitmap, View v) {
-        File outputImage = new File(Environment.getExternalStorageDirectory(), "MYJANDAN/image" + id + ".png");
+
+        String path;
+        File file = new File(String.valueOf(Environment.getExternalStorageDirectory()) + "/MYJANDAN");
+        if (!file.exists())
+            file.mkdirs();
         try {
-            if (outputImage.exists()) {
-                outputImage.delete();
-            }
-            outputImage.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            FileOutputStream out = new FileOutputStream(outputImage);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
-            out.flush();
-            out.close();
-            Toast.makeText(v.getContext(), "图片保存路径：" + outputImage.toString(), Toast.LENGTH_LONG).show();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            path = file.getPath() + "/image" + id + ".png";
+            FileOutputStream fileOutputStream = new FileOutputStream(path);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+            Toast.makeText(v.getContext(), "图片保存路径：" + path, Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

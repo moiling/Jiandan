@@ -177,7 +177,7 @@ public class MainActivity extends MyActivity implements View.OnClickListener,
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imageUri = GetImageUtils.getImageUri(userName + "'s image");
+                imageUri = GetImageUtils.getImageUri(userName + "'s_image");
                 //保存uri
                 SharedPreferences.Editor editor = getSharedPreferences("data" + userName, MODE_PRIVATE).edit();
                 editor.putString("image_uri", imageUri.toString());
