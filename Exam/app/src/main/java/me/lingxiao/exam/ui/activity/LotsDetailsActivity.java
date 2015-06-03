@@ -13,6 +13,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -74,7 +75,6 @@ public class LotsDetailsActivity extends MyActivity implements View.OnClickListe
         tableName = getIntent().getStringExtra("table_name");
         //创建数据库
         dbHelper = new DatabaseHelper(this, "LotsStore.db", null, 1);
-        dbHelper.getWritableDatabase();
         db = dbHelper.getWritableDatabase();
         values = new ContentValues();
 
@@ -88,6 +88,7 @@ public class LotsDetailsActivity extends MyActivity implements View.OnClickListe
             } while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
 
         init();
         initToolbar();
@@ -132,13 +133,13 @@ public class LotsDetailsActivity extends MyActivity implements View.OnClickListe
 
     private void createMember() {
         memberName = mEditText.getText().toString();
-
+        db = dbHelper.getWritableDatabase();
         //数据库
         values.clear();
         values.put("lots_detail_name", memberName);
         values.put("tableId", tableId);
         db.insert("lotsDetail", null, values);
-
+        db.close();
         itemList.add(memberName);
         adapter.notifyDataSetChanged();
 
@@ -151,7 +152,9 @@ public class LotsDetailsActivity extends MyActivity implements View.OnClickListe
     private void clearMembers() {
         itemList.clear();
         // 清空数据库
+        db = dbHelper.getWritableDatabase();
         db.delete("lotsDetail", "tableId = ?", new String[] { tableId + "" });
+        db.close();
         showHint();
         adapter.notifyDataSetChanged();
     }
@@ -208,7 +211,7 @@ public class LotsDetailsActivity extends MyActivity implements View.OnClickListe
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-
+                        db = dbHelper.getWritableDatabase();
                         Cursor cursor = db.rawQuery("select * from lotsDetail where tableId=?",
                                 new String[] { tableId + "" });
                         if (cursor.moveToFirst()) {
@@ -219,6 +222,7 @@ public class LotsDetailsActivity extends MyActivity implements View.OnClickListe
                         }
 
                         db.delete("lotsDetail", "id = ?", new String[] { idList.get(position) + "" });
+                        db.close();
                         idList.clear();
 
                     }
@@ -245,11 +249,15 @@ public class LotsDetailsActivity extends MyActivity implements View.OnClickListe
             float xValue = Math.abs(event.values[0]);
             float yValue = Math.abs(event.values[1]);
             float zValue = Math.abs(event.values[2]);
-            if (xValue > 15 || yValue > 15 || zValue > 15) {
+            if (xValue > 30 || yValue > 30 || zValue > 30) {
                 if (itemList.size() != 0) {
-                    int index = random.nextInt(itemList.size());
-                    show.setVisibility(View.VISIBLE);
-                    show.setText(itemList.get(index));
+                    if (show.getVisibility() == View.GONE) {
+                        int index = random.nextInt(itemList.size());
+                        show.setVisibility(View.VISIBLE);
+                        show.setText(itemList.get(index));
+                        Vibrator vibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+                        vibrator.vibrate(new long[] {100, 200, 100, 400}, -1);
+                    }
                 }
             }
         }

@@ -114,7 +114,7 @@ public class GirlsFragment extends Fragment implements AbsListView.OnScrollListe
 
                         @Override
                         public void onFinish(Bitmap bitmap) {
-                            LogUtils.d("TAG", "得到了bitmap");
+                            LogUtils.d(TAG, "得到了bitmap");
                             Message message = new Message();
                             message.what = 1;
                             message.obj = bitmap;

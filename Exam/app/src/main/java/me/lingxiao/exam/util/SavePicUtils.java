@@ -6,9 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 
 public class SavePicUtils {
@@ -31,25 +29,43 @@ public class SavePicUtils {
     }
 
     public static File getFile(int id, Bitmap bitmap) {
-        File outputImage = new File(Environment.getExternalStorageDirectory(), "MYJANDAN/image" + id + ".png");
+        String path = null;
+        File file = new File(String.valueOf(Environment.getExternalStorageDirectory()) + "/MYJANDAN");
+        if (!file.exists())
+            file.mkdirs();
         try {
-            if (outputImage.exists()) {
-                outputImage.delete();
-            }
-            outputImage.createNewFile();
-        } catch (IOException e) {
+            path = file.getPath() + "/image" + id + ".png";
+            FileOutputStream fileOutputStream = new FileOutputStream(path);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            FileOutputStream out = new FileOutputStream(outputImage);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
-            out.flush();
-            out.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return outputImage;
+        return new File(path);
     }
+
+    /**
+     * 喂猫这个方法在小米上可以，在别的机子上都不行！！！！！！！！！！！
+     * 神了个奇！喂猫把路径分开写就可以了啊！！！！！！！！
+     */
+    /*File outputImage = new File(Environment.getExternalStorageDirectory(), "MYJANDAN/image" + id + ".png");
+    try {
+        if (outputImage.exists()) {
+            outputImage.delete();
+        }
+        outputImage.createNewFile();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    try {
+        FileOutputStream out = new FileOutputStream(outputImage);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+        out.flush();
+        out.close();
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }*/
 }

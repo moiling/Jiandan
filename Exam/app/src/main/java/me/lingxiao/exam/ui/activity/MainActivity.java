@@ -1,5 +1,6 @@
 package me.lingxiao.exam.ui.activity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -32,6 +33,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,18 +117,31 @@ public class MainActivity extends MyActivity implements View.OnClickListener,
     private String verName = "";
     private String url;
 
-    private Handler handler = new Handler() {
+    private MyHandler handler = new MyHandler(this) {
         public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 1:
-                    cyxbsInfo = (CyxbsInfo) msg.obj;
-                    verName = cyxbsInfo.getVersionName();
-                    url = cyxbsInfo.getApkURL();
-                    UpdateAPKUtils.doNewVersionUpdate(url, verName, MainActivity.this);
-                    break;
+            final Activity activity = getActivityReference().get();
+            if (activity != null) {
+                switch (msg.what) {
+                    case 1:
+                        cyxbsInfo = (CyxbsInfo) msg.obj;
+                        verName = cyxbsInfo.getVersionName();
+                        url = cyxbsInfo.getApkURL();
+                        UpdateAPKUtils.doNewVersionUpdate(url, verName, MainActivity.this);
+                        break;
+                }
             }
         }
     };
+
+    private static class MyHandler extends Handler {
+        private WeakReference<Activity> mActivityReference;
+        MyHandler(Activity activity) {
+            mActivityReference = new WeakReference<Activity>(activity);
+        }
+        public WeakReference<Activity> getActivityReference() {
+            return mActivityReference;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,7 +205,7 @@ public class MainActivity extends MyActivity implements View.OnClickListener,
         photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imageUri = GetImageUtils.getImageUri(userName + "'s image");
+                imageUri = GetImageUtils.getImageUri(userName + "'s_image");
                 //保存uri
                 SharedPreferences.Editor editor = getSharedPreferences("data" + userName, MODE_PRIVATE).edit();
                 editor.putString("image_uri", imageUri.toString());

@@ -14,6 +14,7 @@ import java.util.List;
 
 import me.lingxiao.exam.R;
 import me.lingxiao.exam.model.GirlsItem;
+import me.lingxiao.exam.util.LogUtils;
 
 public class GirlsListAdapter extends ArrayAdapter<GirlsItem> {
 
@@ -37,42 +38,45 @@ public class GirlsListAdapter extends ArrayAdapter<GirlsItem> {
         int reply = item.getReply();
         Bitmap bitmap = item.getPic();
 
-        View view;
         ViewHolder viewHolder;
         if (convertView == null) {
-            view = LayoutInflater.from(getContext()).inflate(resouceId, null);
+            convertView = LayoutInflater.from(getContext()).inflate(resouceId, null);
             viewHolder = new ViewHolder();
-            viewHolder.title = (TextView) view.findViewById(R.id.tv_title);
-            viewHolder.date = (TextView) view.findViewById(R.id.tv_date);
-            viewHolder.votePositive = (TextView) view.findViewById(R.id.tv_vote_positive);
-            viewHolder.voteNegative = (TextView) view.findViewById(R.id.tv_vote_negative);
-            viewHolder.reply = (TextView) view.findViewById(R.id.tv_reply);
-            viewHolder.pic = (ImageView) view.findViewById(R.id.iv_pic);
-            view.setTag(viewHolder);
+            viewHolder.title = (TextView) convertView.findViewById(R.id.tv_title);
+            viewHolder.date = (TextView) convertView.findViewById(R.id.tv_date);
+            viewHolder.votePositive = (TextView) convertView.findViewById(R.id.tv_vote_positive);
+            viewHolder.voteNegative = (TextView) convertView.findViewById(R.id.tv_vote_negative);
+            viewHolder.reply = (TextView) convertView.findViewById(R.id.tv_reply);
+            viewHolder.pic = (ImageView) convertView.findViewById(R.id.iv_pic);
+            convertView.setTag(viewHolder);
         } else {
-            view = convertView;
-            viewHolder = (ViewHolder) view.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.title.setText(title);
         viewHolder.date.setText(date);
-        viewHolder.votePositive.setText("OO: " + votePositive);
-        viewHolder.voteNegative.setText("XX: " + voteNegative);
-        viewHolder.reply.setText(view.getResources().getString(R.string.reply) + ": " + reply);
+        viewHolder.votePositive.setText("OO  " + votePositive);
+        viewHolder.voteNegative.setText("XX  " + voteNegative);
+        viewHolder.reply.setText(convertView.getResources().getString(R.string.reply) + "  " + reply);
         if (bitmap != null) {
             double width = getScreenWidth(mContext);
-            double hight = getScreenHight(mContext);
-            double scaleYX = bitmap.getHeight() / bitmap.getWidth();
+            double height = getScreenHeight(mContext);
+            LogUtils.d("pic---->", "ScreenWidth:" + width);
+            LogUtils.d("pic---->", "ScreenHeight:" + width);
+            LogUtils.d("pic---->", "BitmapWidth:" + bitmap.getWidth());
+            LogUtils.d("pic---->", "BitmapHeight:" + bitmap.getHeight());
+            double scaleYX = (double)bitmap.getHeight() / (double)bitmap.getWidth();
+            LogUtils.d("pic---->", "BitmapHeight/BitmapWidth:" + scaleYX);
             ViewGroup.LayoutParams lp = viewHolder.pic.getLayoutParams();
+            double viewHight = width * scaleYX;
+            LogUtils.d("pic---->", "viewHeight:" + viewHight);
             lp.width = (int) width;
-            if ((int) (width * scaleYX) != 0) {
-                lp.height = (int) (width * scaleYX);
-            } else {
-                lp.height = (int) (hight / 3);
-            }
+            LogUtils.d("pic---->", "LayoutWidth:" + lp.width);
+            lp.height = (int) (viewHight);
+            LogUtils.d("pic---->", "LayoutHeight:" + lp.height);
             viewHolder.pic.setLayoutParams(lp);
         }
         viewHolder.pic.setImageBitmap(bitmap);
-        return view;
+        return convertView;
     }
 
     private class ViewHolder {
@@ -87,7 +91,7 @@ public class GirlsListAdapter extends ArrayAdapter<GirlsItem> {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.widthPixels;
     }
-    public static int getScreenHight(Context context) {
+    public static int getScreenHeight(Context context) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.heightPixels;
     }

@@ -25,20 +25,18 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
         String text = getItem(position);
 
-        View view;
         ViewHolder viewHolder;
         if (convertView == null) {
-            view = LayoutInflater.from(getContext()).inflate(resouceId, null);
+            convertView = LayoutInflater.from(getContext()).inflate(resouceId, null);
             viewHolder = new ViewHolder();
-            viewHolder.title = (TextView) view.findViewById(R.id.tv_item);
-            view.setTag(viewHolder);
+            viewHolder.title = (TextView) convertView.findViewById(R.id.tv_item);
+            convertView.setTag(viewHolder);
         } else {
-            view = convertView;
-            viewHolder = (ViewHolder) view.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.title.setText(text);
 
-        return view;
+        return convertView;
     }
 
     private class ViewHolder {

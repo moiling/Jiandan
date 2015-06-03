@@ -55,7 +55,6 @@ public class LotsFragment extends Fragment implements View.OnClickListener, Adap
         super.onCreate(savedInstanceState);
         //创建数据库
         dbHelper = new DatabaseHelper(getActivity(), "LotsStore.db", null, 1);
-        dbHelper.getWritableDatabase();
         db = dbHelper.getWritableDatabase();
         values = new ContentValues();
 
@@ -68,6 +67,7 @@ public class LotsFragment extends Fragment implements View.OnClickListener, Adap
             } while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
     }
 
     @Override
@@ -114,8 +114,10 @@ public class LotsFragment extends Fragment implements View.OnClickListener, Adap
     }
     private void clearTables() {
         items.clear();
+        db = dbHelper.getWritableDatabase();
         db.execSQL("DELETE FROM lotsDetail");
         db.execSQL("DELETE FROM lots");
+        db.close();
         showHint();
         adapter.notifyDataSetChanged();
     }
@@ -124,10 +126,11 @@ public class LotsFragment extends Fragment implements View.OnClickListener, Adap
         lotName = mEditText.getText().toString();
 
         //数据库
+        db = dbHelper.getWritableDatabase();
         values.clear();
         values.put("lots_name", lotName);
         db.insert("lots", null, values);
-
+        db.close();
         items.add(lotName);
         adapter.notifyDataSetChanged();
         mLayout.setVisibility(View.GONE);
@@ -161,6 +164,7 @@ public class LotsFragment extends Fragment implements View.OnClickListener, Adap
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String name = items.get(position);
+        db = dbHelper.getWritableDatabase();
         Cursor cursor = db.query("lots", null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
@@ -168,6 +172,7 @@ public class LotsFragment extends Fragment implements View.OnClickListener, Adap
                 idList.add(tableId);
             } while (cursor.moveToNext());
         }
+        db.close();
         LotsDetailsActivity.actionStart(view.getContext(), name, idList.get(position));
         // 不清空数据全乱了
         idList.clear();
@@ -187,7 +192,7 @@ public class LotsFragment extends Fragment implements View.OnClickListener, Adap
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-
+                        db = dbHelper.getWritableDatabase();
                         Cursor cursor = db.query("lots", null, null, null, null, null, null);
                         if (cursor.moveToFirst()) {
                             do {
@@ -200,7 +205,7 @@ public class LotsFragment extends Fragment implements View.OnClickListener, Adap
 
                         db.delete("lotsDetail", "tableId = ?", new String[] { idList.get(position) + "" });
                         idList.clear();
-
+                        db.close();
                     }
                 }).start();
                 items.remove(position);

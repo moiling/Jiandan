@@ -31,30 +31,27 @@ public class StoriesListAdapter extends ArrayAdapter<StoriesItem> {
         int votePositive = item.getVotePositive();
         int voteNegative = item.getVoteNegative();
         int reply = item.getReply();
-
-        View view;
         ViewHolder viewHolder;
         if (convertView == null) {
-            view = LayoutInflater.from(getContext()).inflate(resouceId, null);
+            convertView = LayoutInflater.from(getContext()).inflate(resouceId, null);
             viewHolder = new ViewHolder();
-            viewHolder.title = (TextView) view.findViewById(R.id.tv_title);
-            viewHolder.date = (TextView) view.findViewById(R.id.tv_date);
-            viewHolder.votePositive = (TextView) view.findViewById(R.id.tv_vote_positive);
-            viewHolder.voteNegative = (TextView) view.findViewById(R.id.tv_vote_negative);
-            viewHolder.reply = (TextView) view.findViewById(R.id.tv_reply);
-            viewHolder.content = (TextView) view.findViewById(R.id.tv_content);
-            view.setTag(viewHolder);
+            viewHolder.title = (TextView) convertView.findViewById(R.id.tv_title);
+            viewHolder.date = (TextView) convertView.findViewById(R.id.tv_date);
+            viewHolder.votePositive = (TextView) convertView.findViewById(R.id.tv_vote_positive);
+            viewHolder.voteNegative = (TextView) convertView.findViewById(R.id.tv_vote_negative);
+            viewHolder.reply = (TextView) convertView.findViewById(R.id.tv_reply);
+            viewHolder.content = (TextView) convertView.findViewById(R.id.tv_content);
+            convertView.setTag(viewHolder);
         } else {
-            view = convertView;
-            viewHolder = (ViewHolder) view.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.title.setText(title);
         viewHolder.date.setText(date);
-        viewHolder.votePositive.setText("OO: " + votePositive);
-        viewHolder.voteNegative.setText("XX: " + voteNegative);
-        viewHolder.reply.setText(view.getResources().getString(R.string.reply) + ": " + reply);
+        viewHolder.votePositive.setText("OO  " + votePositive);
+        viewHolder.voteNegative.setText("XX  " + voteNegative);
+        viewHolder.reply.setText(convertView.getResources().getString(R.string.reply) + "  " + reply);
         viewHolder.content.setText(content);
-        return view;
+        return convertView;
     }
 
     private class ViewHolder {

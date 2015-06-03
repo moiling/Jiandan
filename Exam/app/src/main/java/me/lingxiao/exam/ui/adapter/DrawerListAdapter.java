@@ -29,21 +29,19 @@ public class DrawerListAdapter extends ArrayAdapter<DrawerListItem> {
         DrawerListItem item = getItem(position);
         String text = item.getText();
         int imageId = item.getImageId();
-        View view;
         ViewHolder viewHolder;
         if (convertView == null) {
-            view = LayoutInflater.from(getContext()).inflate(resouceId, null);
+            convertView = LayoutInflater.from(getContext()).inflate(resouceId, null);
             viewHolder = new ViewHolder();
-            viewHolder.textView = (TextView) view.findViewById(R.id.tv_item);
-            viewHolder.imageView = (ImageView) view.findViewById(R.id.iv_image);
-            view.setTag(viewHolder);
+            viewHolder.textView = (TextView) convertView.findViewById(R.id.tv_item);
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.iv_image);
+            convertView.setTag(viewHolder);
         } else {
-            view = convertView;
-            viewHolder = (ViewHolder) view.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.textView.setText(text);
         viewHolder.imageView.setImageResource(imageId);
-        return view;
+        return convertView;
     }
 
     private class ViewHolder {
