@@ -1,6 +1,6 @@
 ## 考核完成情况如下：
 
-- APK下载
+- APK下载//留下点脚印
 
   > 链接：http://pan.baidu.com/s/1mgh5CoS 密码：l8w5
 
